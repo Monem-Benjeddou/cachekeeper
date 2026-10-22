@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cachekeeper"
+version = "0.1.0"
+description = "Shows why an agent's prompt cache keeps missing on llama.cpp, Ollama and LM Studio."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["starlette", "uvicorn", "httpx", "pydantic-settings", "tomli>=2; python_version < \"3.11\""]
+
+[project.optional-dependencies]
+dev = ["pytest", "coverage", "hypothesis", "ruff", "mypy", "pre-commit"]
+
+[project.scripts]
+cachekeeper = "cachekeeper.adapters.inbound.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cachekeeper"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # Docstrings only on public functions in core/; see per-file-ignores for D103.
+    "D100", "D101", "D102", "D104", "D105", "D106", "D107",
+    # No per-file license headers; the license is in pyproject.
+    "CPY",
+    # Conflicts with ruff format.
+    "COM812",
+    # Domain errors take a short inline message; a message variable per raise adds noise.
+    "EM101", "EM102", "TRY003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"!src/cachekeeper/core/**" = ["D103"]
+"tests/**" = ["S101", "PLR2004", "INP001", "ANN401", "SLF001", "ARG002"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.pylint]
+max-args = 4
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+strict = true
+python_version = "3.10"
+mypy_path = "src"
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not perf and not live'"
+markers = [
+    "perf: overhead budget, run in CI",
+    "live: real Ollama or llama.cpp, needs CACHEKEEPER_LIVE=1",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["cachekeeper"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

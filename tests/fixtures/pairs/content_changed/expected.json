@@ -1,0 +1,5 @@
+{
+  "cause": "content_changed",
+  "location": "msg[5]:471",
+  "after_line": "│def test_remove_exceeds_stock():"
+}

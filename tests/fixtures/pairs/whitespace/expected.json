@@ -1,0 +1,6 @@
+{
+  "cause": "whitespace",
+  "location": "sys[0]:200",
+  "before_line": "- be brief",
+  "after_line": "-  be brief"
+}

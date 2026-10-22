@@ -1,0 +1,6 @@
+{
+  "cause": "system_replaced",
+  "location": "sys[0]:10",
+  "before_line": "You are a coding agent working in the user's repository. Follow the project's conventions, keep changes small, run the tests befor",
+  "after_line": "You are a title generator. Reply with a five-word title for the conversation."
+}

@@ -1,0 +1,1 @@
+{"id":"chatcmpl-997","object":"chat.completion","created":1792590403,"model":"qwen3:4b","system_fingerprint":"lmstudio","choices":[{"index":0,"message":{"role":"assistant","content":"","reasoning":"Okay, the"},"finish_reason":"length"}],"usage":{"prompt_tokens":272,"completion_tokens":3,"total_tokens":275}}

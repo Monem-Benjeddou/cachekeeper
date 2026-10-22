@@ -1,0 +1,3 @@
+{"model":"qwen3:4b","created_at":"2026-10-21T13:46:43.778536Z","message":{"role":"assistant","content":"","thinking":"Okay"},"done":false}
+{"model":"qwen3:4b","created_at":"2026-10-21T13:46:43.802866Z","message":{"role":"assistant","content":"","thinking":","},"done":false}
+{"model":"qwen3:4b","created_at":"2026-10-21T13:46:43.803014Z","message":{"role":"assistant","content":""},"done":true,"done_reason":"length","total_duration":212862584,"load_duration":141243459,"prompt_eval_count":11,"prompt_eval_duration":42671000,"eval_count":2,"eval_duration":24322000}

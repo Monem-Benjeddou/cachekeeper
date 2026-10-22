@@ -1,0 +1,61 @@
+{
+  "model": "qwen3:4b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a coding agent working in the user's repository. Follow the project's conventions, keep changes small, run the tests before you finish and explain what you changed in one paragraph."
+    },
+    {
+      "role": "user",
+      "content": "Fix the failing test in tests/test_api.py"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "read_file",
+        "description": "read_file tool",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "write_file",
+        "description": "write_file tool",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "run_shell",
+        "description": "run_shell tool",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "stream": true
+}

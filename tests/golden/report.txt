@@ -1,0 +1,22 @@
+requests        6
+main turns      2, hit rate 100% (2 with backend stats)
+side requests   4, hit rate 100% (4 with backend stats)
+prefill         0.1 s
+wasted (est.)   0.1 s
+
+top causes
+1. content_changed: 2 requests, 0.0 s wasted
+   e.g. 01TEST00000000000000000003 at sys[0]:189 (chars)
+   - …plain what you changed in one paragraph. You are a coding ag…
+   + …re you finish and explain what you changed in one paragraph.
+   fix: An earlier message was edited; keep sent history immutable (Aider rewrites two messages in place: the repo map, try --map-refresh manual; the history summary, raise --max-chat-history-tokens)
+2. hex_nonce: 1 requests, 0.0 s wasted
+   e.g. 01TEST00000000000000000006 at sys[0]:50 (chars)
+   - …anthropic-billing-header: cc_version=2.1.3; cch=8f3a1c9e2b7d
+   + …anthropic-billing-header: cc_version=2.1.3; cch=1d4e6a0b9c2f
+   fix: Per-request hash near the top; for Claude Code set CLAUDE_CODE_ATTRIBUTION_HEADER=0 (claude-code-router PR #1220)
+3. iso_datetime: 1 requests, 0.0 s wasted
+   e.g. 01TEST00000000000000000002 at sys[0]:312 (chars)
+   - Current time: 2026-10-21T14:03
+   + Current time: 2026-10-21T14:05
+   fix: Use a date-only line or move the time to the end of the prompt (hermes-agent #8687, merged PR #27675)

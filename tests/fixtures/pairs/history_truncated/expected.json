@@ -1,0 +1,6 @@
+{
+  "cause": "history_truncated",
+  "location": "msg[1]:5",
+  "before_line": "Turn one: list the files",
+  "after_line": "Turn two: open README.md"
+}
